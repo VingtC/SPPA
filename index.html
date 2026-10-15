@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>À qui je ressemble – SPPA</title>
+<title> Mon regard sur moi – SPPA</title>
 <style>
 :root{--bg:#f2f4f9;--card:#fff;--ink:#1b2340;--mute:#5b6480;--line:#d9ddea;--acc:#7a4fc0;--accl:#e6dcf5;--err:#b3261e;--c1:#7a4fc0;--c2:#c46a12;--c3:#0f7d8c}
 @media(prefers-color-scheme:dark){:root{--bg:#141829;--card:#1d2238;--ink:#eef0f8;--mute:#a4abc4;--line:#323957;--acc:#b794ee;--accl:#3b2f5c;--err:#ff8a80;--c1:#b794ee;--c2:#f0a35a;--c3:#4fc3d4}}
@@ -37,13 +37,13 @@ td.n{text-align:center;width:3.2em}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 16px 16px}
 .def{font-size:.9rem;color:var(--mute)}.def li{margin:.3em 0}
 .meta{display:grid;grid-template-columns:auto 1fr;gap:2px 14px}.meta dt{color:var(--mute)}.meta dd{margin:0;font-weight:600}
-.five{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.dom{margin-bottom:12px}.side p.d{font-weight:400;font-size:.9rem;color:var(--mute)}.tw{overflow-x:auto}.rad{width:100%;height:auto;display:block;margin:8px auto;max-width:460px}.rad text{fill:var(--ink);font-size:11px;font-family:inherit}.rad .t{fill:var(--mute);font-size:9px}.leg{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:.9rem;margin:4px 0 8px}.leg span{display:inline-flex;align-items:center;gap:6px}table{font-size:.92rem}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.dom{margin-bottom:12px}.side p.d{font-weight:400;font-size:.9rem;color:var(--mute)}.tw{overflow-x:auto}.save{border:2px solid var(--acc);background:var(--accl);border-radius:12px;padding:14px 16px 16px;margin:0 0 18px}.save p{margin:0 0 4px}a.btn{text-align:center;text-decoration:none;font-size:1.1rem}.rad{width:100%;height:auto;display:block;margin:8px auto;max-width:460px}.rad text{fill:var(--ink);font-size:11px;font-family:inherit}.rad .t{fill:var(--mute);font-size:9px}.leg{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:.9rem;margin:4px 0 8px}.leg span{display:inline-flex;align-items:center;gap:6px}table{font-size:.92rem}
 @media print{body{background:#fff;color:#000;font-size:12pt}main{max-width:none;padding:0}.noprint{display:none!important}.card{border:0;padding:0}.seg b{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body><main id="app"></main>
 <script>
-const GRIST_FORM_URL="https://grist.numerique.gouv.fr/o/docs/forms/iBukhHhpHvKd6hcn4KT8wE/10"; // lien public du formulaire Grist (sans "?Code=") ; vide = pas de bouton d'envoi
+const GRIST_FORM_URL="https://grist.numerique.gouv.fr/o/docs/forms/iBukhHhpHvKd6hcn4KT8wE/10"; // formulaire Grist public (sans "?Code=")
 
 const L=["se trouvent aussi intelligents que les autres de leur âge","trouvent difficiles de se faire des copains","sont bons dans beaucoup de sports","ne sont pas heureux de leur apparence physique","se sentent prêts à se débrouiller dans un petit boulot","pensent que s'ils sont amoureux de quelqu'un, cette personne les aimera aussi","font généralement ce qu'il est bien de faire","sont capables de se faire de vrais amis intimes","sont souvent déçus par eux-mêmes","sont assez lents pour finir leur travail scolaire","ont beaucoup de copains","estiment qu'ils seraient bons dans toute activité sportive nouvelle","aimeraient que leur corps soit différent","ont l'impression qu'ils n'ont pas assez de capacités pour faire bien un petit boulot","ne donnent pas rendez-vous aux personnes qui les attirent","ont des ennuis pour ce qu'ils font","ont un ami intime avec lequel ils peuvent partager leurs secrets","n'aiment pas la façon dont ils mènent leur vie","réussissent très bien dans leur travail scolaire","ne sont pas appréciés facilement","ont le sentiment qu'ils sont meilleurs que les autres en sport","souhaiteraient que leur apparence physique soit différente","pensent qu'ils sont assez mûrs pour obtenir et assumer un travail payé","pensent que d'autres de leur âge tomberont amoureux d'eux","se sentent vraiment bien quant à la façon dont ils agissent","aimeraient avoir un véritable ami avec qui partager des choses","sont la plupart du temps heureux de ce qu'ils sont","ont des difficultés pour arriver à trouver les réponses en classe","sont très appréciés des autres de leur âge","ne s'en tirent pas bien dans les jeux de plein air nouveaux","pensent qu'ils sont beaux","pensent qu'ils pourraient faire mieux dans leurs petits jobs","se trouvent drôles et intéressants lorsqu'ils sortent avec quelqu'un","font des choses qu'ils savent qu'ils ne devraient pas faire","trouvent qu'il est difficile de se faire des amis proches en qui ils puissent avoir vraiment confiance","apprécient ce qu'ils sont","se trouvent assez intelligents","trouvent qu'ils sont bien acceptés socialement","ne se trouvent pas très athlétiques","aiment vraiment leur apparence","pensent qu'ils sont vraiment capables d'assumer un travail payé","généralement ne sortent pas avec les personnes à qui ils aimeraient vraiment donner rendez-vous","agissent habituellement comme ils savent qu'ils sont supposés le faire","n'ont pas un ami proche avec qui partager vraiment des idées personnelles","sont très heureux de leur état"].map(t=>"Certains jeunes "+t);
 const R=["D'autres jeunes ne sont pas aussi sûrs et se demandent s'ils sont aussi intelligents que les autres de leur âge","D'autres trouvent assez facile de se faire des copains","D'autres pensent qu'ils ne sont pas très bons en sport","D'autres jeunes sont heureux de leur apparence physique","D'autres jeunes ne se sentent pas tout à fait prêts à se charger d'un petit boulot","D'autres jeunes, quand ils sont amoureux de quelqu'un, ont peur que cette personne ne les aime pas","D'autres jeunes souvent ne font pas ce qu'ils savent qu'il est bien de faire","D'autres jeunes trouvent difficile de se faire de vrais amis intimes","D'autres jeunes sont assez satisfaits d'eux-mêmes","D'autres jeunes peuvent faire leur travail scolaire plus rapidement","D'autres n'ont pas beaucoup de copains","D'autres ont peur de ne pas être bons dans une nouvelle activité sportive","D'autres aiment leur corps tel qu'il est","D'autres jeunes ont l'impression qu'ils ont assez de capacités pour faire bien un petit boulot","D'autres jeunes donnent rendez-vous aux personnes qui les attirent","D'autres jeunes ne font pas, généralement, ce qui leur causerait des ennuis","D'autres jeunes n'ont pas vraiment d'ami intime avec lequel partager leurs secrets","D'autres jeunes aiment la façon dont ils mènent leur vie","D'autres jeunes ne réussissent pas très bien dans leur travail scolaire","D'autres jeunes sont vraiment faciles à aimer","D'autres jeunes ont l'impression qu'ils ne peuvent pas être aussi bons que les autres en sport","D'autres jeunes apprécient leur apparence physique telle qu'elle est","D'autres jeunes ne se sentent pas assez mûrs pour bien exercer un travail payé","D'autres jeunes s'inquiètent en se demandant si d'autres de leur âge tomberont amoureux d'eux","D'autres jeunes ne se sentent pas bien quant à la façon dont ils agissent souvent","D'autres jeunes ont un ami proche avec qui ils partagent des choses","D'autres jeunes ne sont pas souvent heureux de ce qu'ils sont","D'autres jeunes peuvent presque toujours trouver les réponses","D'autres jeunes ne sont pas très appréciés des autres de leur âge","D'autres jeunes sont bons tout de suite dans les jeux de plein air nouveaux","D'autres pensent qu'ils ne sont pas très beaux","D'autres pensent qu'ils travaillent vraiment bien dans les petits jobs qu'ils font","D'autres se demandent s'ils sont drôles et intéressants lorsqu'ils sortent avec quelqu'un","D'autres jeunes ne font presque jamais des choses qu'ils savent qu'ils ne devraient pas faire","D'autres jeunes sont capables de se faire des amis proches en qui ils peuvent avoir vraiment confiance","D'autres souhaiteraient être quelqu'un d'autre","D'autres jeunes se demandent s'ils sont intelligents","D'autres jeunes souhaiteraient que les autres de leur âge soient plus nombreux à les accepter","D'autres jeunes se trouvent très athlétiques","D'autres jeunes voudraient que leur apparence soit différente","D'autres jeunes se demandent s'ils feraient aussi bien qu'ils le devraient dans un travail payé","D'autres jeunes sortent avec les personnes à qui ils voulaient vraiment donner rendez-vous","D'autres jeunes souvent n'agissent pas comme ils sont supposés le faire","D'autres jeunes ont un ami proche et peuvent partager avec lui des idées et des sentiments personnels","D'autres jeunes voudraient être différents de ce qu'ils sont"];
@@ -101,6 +101,31 @@ let info={},ans=[],idx=-1,pI=[],pC=[];
 const $=s=>app.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
+function welcome(){
+  app.innerHTML=`<h1>À qui je ressemble</h1>
+  <p class="mute">Questionnaire d'auto-perception (SPPA)</p>
+  <div class="pair">
+   <div class="side"><p>Je passe le questionnaire</p><p class="mute" style="font-weight:400">45 questions puis 2 petites séries sur l'importance et la compétence, environ 15 minutes.</p><button class="btn" id="a" style="margin-top:8px">Passer le questionnaire</button></div>
+   <div class="side"><p>J'ai déjà un code de résultat</p><p class="mute" style="font-weight:400">Pour retrouver et imprimer un rapport à partir du code ou du lien reçu.</p><button class="btn sec" id="b" style="margin-top:8px">Retrouver mon rapport</button></div>
+  </div>`;
+  $("#a").onclick=home;$("#b").onclick=()=>retrieve();
+}
+function parseInput(v){const m=v.match(/#r=([^\s&]+)/);return(m?m[1]:v).trim()}
+function showCode(c){
+  const d=decodeCode(c);if(!d)return false;
+  info={code:d.id,sexe:d.sexe,niv:d.niv,fin:d.fin};ans=d.ans;pI=d.pI;pC=d.pC;
+  const raw=score(ans);report(raw,etalon(raw,d.niv,d.sexe),c,false);return true;
+}
+function retrieve(msg){
+  app.innerHTML=`<h1>Retrouver mon rapport</h1>
+  <p>Colle ton code de résultat, ou le lien reçu par e-mail.</p>
+  <label for="cd">Code ou lien</label><input id="cd" autocomplete="off" autocapitalize="off" spellcheck="false">
+  <div class="err" id="err" role="alert">${msg||""}</div>
+  <button class="btn" id="go">Afficher mon rapport</button>
+  <button class="back" id="bk">Retour à l'accueil</button>`;
+  $("#bk").onclick=welcome;
+  $("#go").onclick=()=>{if(!showCode(parseInput($("#cd").value)))$("#err").textContent="Code invalide : vérifie qu'il est copié en entier."};
+}
 function home(){
   app.innerHTML=`<h1>À qui je ressemble</h1>
   <p>Ce questionnaire cherche à savoir quel type de personne tu es. C'est une enquête, pas un test : il n'y a ni bonnes ni mauvaises réponses. Il y a 45 questions, environ 10 minutes.</p>
@@ -109,7 +134,9 @@ function home(){
   <label for="naiss">Date de naissance</label><input id="naiss" type="date">
   <label for="niv">Niveau</label><select id="niv"><option value="">Choisir…</option><option value="Col">Collège</option><option value="LGT">Lycée général ou technologique</option><option value="LPro">Lycée professionnel</option></select>
   <div class="err" id="err" role="alert"></div>
-  <button class="btn" id="go">Commencer</button>`;
+  <button class="btn" id="go">Commencer</button>
+  <button class="back" id="bk">Retour à l'accueil</button>`;
+  $("#bk").onclick=welcome;
   $("#go").onclick=()=>{
     const v=id=>$("#"+id).value.trim();
     if(!v("code")||!v("sexe")||!v("naiss")||!v("niv")){$("#err").textContent="Complète les quatre champs pour continuer.";return}
@@ -165,7 +192,7 @@ function position(kind){
 function finish(){
   info.fin=new Date().toISOString();
   const raw=score(ans);
-  report(raw,etalon(raw,info.niv,info.sexe),makeCode());
+  report(raw,etalon(raw,info.niv,info.sexe),makeCode(),true);
 }
 const SH=["Scolaire","Social","Athlétique","Physique","Travail","Amoureux","Conduite","Amitié","Valeur globale"];
 const SER=[["Résultats étalonnés","var(--c1)",""],["Importance","var(--c2)","8 4"],["Compétence","var(--c3)","2 4"]];
@@ -197,12 +224,14 @@ function tauBlock(et){
   return `<h2>Cohérence entre les trois mesures</h2><div class="tw"><table><thead><tr><th>Comparaison</th><th class="n">τ</th><th>Lecture</th></tr></thead><tbody>${rows}</tbody></table></div>
   <p class="mute">Le τ de Kendall (version τb) compare deux classements des 9 dimensions : +1 s'ils sont identiques, 0 s'ils n'ont aucun lien, −1 s'ils sont opposés. Avec seulement 9 dimensions et beaucoup d'ex æquo, c'est une indication, pas un test statistique.</p>`;
 }
-function report(raw,et,code){
+function report(raw,et,code,fresh){
   const d=new Date(info.fin).toLocaleDateString("fr-FR"),
         mm=info.debut?Math.round((new Date(info.fin)-new Date(info.debut))/60000):null;
   const rows=SC.map((s,i)=>`<tr><td>${s.n}</td><td class="n">${raw[i]}</td><td><div class="seg" aria-label="Étalon ${et[i]} sur 5">${[1,2,3,4,5].map(k=>`<b class="${k<=et[i]?"f":""}"></b>`).join("")}</div></td><td class="n">${et[i]}</td><td class="n">${pI[i]}</td><td class="n">${pC[i]}</td></tr>`).join("");
   const mx=Math.max(...pI),top=SC.filter((_,i)=>pI[i]===mx).map(s=>s.n).join(", ");
+  const save=fresh&&GRIST_FORM_URL?`<div class="save noprint"><p><b>Dernière étape : sauvegarde tes résultats</b></p><p class="mute">Une page s'ouvre avec ton code déjà rempli. Il te reste à valider avec le bouton d'envoi du formulaire.</p><a class="btn" target="_blank" rel="noopener" href="${GRIST_FORM_URL}?Code=${encodeURIComponent(code)}">Sauvegarder mes résultats</a></div>`:"";
   app.innerHTML=`<h1>Mes résultats : « À qui je ressemble »</h1>
+  ${save}
   <div class="card"><dl class="meta"><dt>Nom ou code</dt><dd>${esc(info.code)}</dd><dt>Date de passation</dt><dd>${d}</dd>${mm!==null?`<dt>Durée</dt><dd>${mm} min</dd>`:""}<dt>Niveau</dt><dd>${NIV[info.niv]}</dd></dl>
   <div class="tw"><table><thead><tr><th>Dimension</th><th class="n">Brut</th><th>Étalon</th><th class="n"></th><th class="n">Imp.</th><th class="n">Comp.</th></tr></thead><tbody>${rows}</tbody></table></div>
   <p class="mute">Score brut : de 5 à 20. Étalon : position par rapport à un groupe de référence de même sexe et de même niveau (${NIV[info.niv]}, ${info.sexe==="F"?"filles":"garçons"}) ; 1 = bas, 5 = haut.</p>
@@ -211,17 +240,14 @@ function report(raw,et,code){
   ${tauBlock(et)}
   <h2>Les 9 dimensions</h2><ul class="def">${SC.map(s=>`<li><b>${s.n}</b> : ${s.d}</li>`).join("")}</ul></div>
   <div class="noprint">
-  ${GRIST_FORM_URL?'<button class="btn" id="env">Envoyer mes résultats</button>':""}
   <button class="btn sec" onclick="print()">Imprimer ou enregistrer en PDF</button>
   <button class="btn sec" id="cp">Copier mon code de résultat</button>
-  <p class="mute">Mon code de résultat : <code style="word-break:break-all">${code}</code></p></div>`;
-  const env=$("#env");
-  if(env)env.onclick=()=>window.open(GRIST_FORM_URL+"?Code="+encodeURIComponent(code),"_blank");
+  <p class="mute">Mon code de résultat : <code style="word-break:break-all">${code}</code></p><button class="back" id="acc">Retour à l'accueil</button></div>`;
+  $("#acc").onclick=welcome;
   $("#cp").onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(code):Promise.reject()).then(()=>$("#cp").textContent="Copié").catch(()=>prompt("Copie ce code :",code))};
 }
-const hm=location.hash.match(/^#r=(.+)$/),dec=hm&&decodeCode(hm[1]);
-if(dec){info={code:dec.id,sexe:dec.sexe,niv:dec.niv,fin:dec.fin};ans=dec.ans;pI=dec.pI;pC=dec.pC;const raw=score(ans);report(raw,etalon(raw,dec.niv,dec.sexe),hm[1])}
-else{home();if(hm)$("#err").textContent="Code de résultat invalide : vérifie le lien."}
+const hm=location.hash.match(/^#r=(.+)$/);
+if(!(hm&&showCode(hm[1])))hm?retrieve("Code de résultat invalide : vérifie le lien."):welcome();
 </script>
 </body>
 </html>
