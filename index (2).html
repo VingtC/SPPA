@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À qui je ressemble – SPPA</title>
+<style>
+:root{--bg:#f2f4f9;--card:#fff;--ink:#1b2340;--mute:#5b6480;--line:#d9ddea;--acc:#7a4fc0;--accl:#e6dcf5;--err:#b3261e;--c1:#7a4fc0;--c2:#c46a12;--c3:#0f7d8c}
+@media(prefers-color-scheme:dark){:root{--bg:#141829;--card:#1d2238;--ink:#eef0f8;--mute:#a4abc4;--line:#323957;--acc:#b794ee;--accl:#3b2f5c;--err:#ff8a80;--c1:#b794ee;--c2:#f0a35a;--c3:#4fc3d4}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 "Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.6rem;line-height:1.2;margin:.2em 0 .4em}
+h2{font-size:1.15rem;margin:1.4em 0 .4em}
+p{margin:.5em 0}.mute{color:var(--mute);font-size:.92rem}
+label{display:block;margin:14px 0 4px;font-weight:600}
+input,select{width:100%;padding:12px;font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:8px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn{display:block;width:100%;margin-top:22px;padding:14px;border:0;border-radius:10px;background:var(--acc);color:#fff;font-weight:700}
+.btn.sec{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
+.err{color:var(--err);margin-top:10px;min-height:1.4em}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:0 0 18px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc);transition:width .25s}
+.pair{display:grid;gap:10px}
+.side{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px}
+.side p{margin:0 0 10px;font-weight:600}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{padding:12px 8px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.opt:hover,.opt.on{border-color:var(--acc);background:var(--accl)}
+.mais{text-align:center;font-weight:700;color:var(--mute);letter-spacing:.08em}
+.back{background:none;border:0;color:var(--mute);margin-top:16px;padding:8px 0;text-decoration:underline}
+table{width:100%;border-collapse:collapse;margin:8px 0}
+th,td{padding:9px 6px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:.85rem;color:var(--mute);font-weight:600}
+td.n{text-align:center;width:3.2em}
+.seg{display:flex;gap:3px;min-width:120px}.seg b{flex:1;height:16px;border-radius:3px;background:var(--line)}.seg b.f{background:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 16px 16px}
+.def{font-size:.9rem;color:var(--mute)}.def li{margin:.3em 0}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:2px 14px}.meta dt{color:var(--mute)}.meta dd{margin:0;font-weight:600}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.dom{margin-bottom:12px}.side p.d{font-weight:400;font-size:.9rem;color:var(--mute)}.tw{overflow-x:auto}.rad{width:100%;height:auto;display:block;margin:8px auto;max-width:460px}.rad text{fill:var(--ink);font-size:11px;font-family:inherit}.rad .t{fill:var(--mute);font-size:9px}.leg{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:.9rem;margin:4px 0 8px}.leg span{display:inline-flex;align-items:center;gap:6px}table{font-size:.92rem}
+@media print{body{background:#fff;color:#000;font-size:12pt}main{max-width:none;padding:0}.noprint{display:none!important}.card{border:0;padding:0}.seg b{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body><main id="app"></main>
+<script>
+const GRIST_FORM_URL=""; // lien public du formulaire Grist (sans "?Code=") ; vide = pas de bouton d'envoi
+
+const L=["se trouvent aussi intelligents que les autres de leur âge","trouvent difficiles de se faire des copains","sont bons dans beaucoup de sports","ne sont pas heureux de leur apparence physique","se sentent prêts à se débrouiller dans un petit boulot","pensent que s'ils sont amoureux de quelqu'un, cette personne les aimera aussi","font généralement ce qu'il est bien de faire","sont capables de se faire de vrais amis intimes","sont souvent déçus par eux-mêmes","sont assez lents pour finir leur travail scolaire","ont beaucoup de copains","estiment qu'ils seraient bons dans toute activité sportive nouvelle","aimeraient que leur corps soit différent","ont l'impression qu'ils n'ont pas assez de capacités pour faire bien un petit boulot","ne donnent pas rendez-vous aux personnes qui les attirent","ont des ennuis pour ce qu'ils font","ont un ami intime avec lequel ils peuvent partager leurs secrets","n'aiment pas la façon dont ils mènent leur vie","réussissent très bien dans leur travail scolaire","ne sont pas appréciés facilement","ont le sentiment qu'ils sont meilleurs que les autres en sport","souhaiteraient que leur apparence physique soit différente","pensent qu'ils sont assez mûrs pour obtenir et assumer un travail payé","pensent que d'autres de leur âge tomberont amoureux d'eux","se sentent vraiment bien quant à la façon dont ils agissent","aimeraient avoir un véritable ami avec qui partager des choses","sont la plupart du temps heureux de ce qu'ils sont","ont des difficultés pour arriver à trouver les réponses en classe","sont très appréciés des autres de leur âge","ne s'en tirent pas bien dans les jeux de plein air nouveaux","pensent qu'ils sont beaux","pensent qu'ils pourraient faire mieux dans leurs petits jobs","se trouvent drôles et intéressants lorsqu'ils sortent avec quelqu'un","font des choses qu'ils savent qu'ils ne devraient pas faire","trouvent qu'il est difficile de se faire des amis proches en qui ils puissent avoir vraiment confiance","apprécient ce qu'ils sont","se trouvent assez intelligents","trouvent qu'ils sont bien acceptés socialement","ne se trouvent pas très athlétiques","aiment vraiment leur apparence","pensent qu'ils sont vraiment capables d'assumer un travail payé","généralement ne sortent pas avec les personnes à qui ils aimeraient vraiment donner rendez-vous","agissent habituellement comme ils savent qu'ils sont supposés le faire","n'ont pas un ami proche avec qui partager vraiment des idées personnelles","sont très heureux de leur état"].map(t=>"Certains jeunes "+t);
+const R=["D'autres jeunes ne sont pas aussi sûrs et se demandent s'ils sont aussi intelligents que les autres de leur âge","D'autres trouvent assez facile de se faire des copains","D'autres pensent qu'ils ne sont pas très bons en sport","D'autres jeunes sont heureux de leur apparence physique","D'autres jeunes ne se sentent pas tout à fait prêts à se charger d'un petit boulot","D'autres jeunes, quand ils sont amoureux de quelqu'un, ont peur que cette personne ne les aime pas","D'autres jeunes souvent ne font pas ce qu'ils savent qu'il est bien de faire","D'autres jeunes trouvent difficile de se faire de vrais amis intimes","D'autres jeunes sont assez satisfaits d'eux-mêmes","D'autres jeunes peuvent faire leur travail scolaire plus rapidement","D'autres n'ont pas beaucoup de copains","D'autres ont peur de ne pas être bons dans une nouvelle activité sportive","D'autres aiment leur corps tel qu'il est","D'autres jeunes ont l'impression qu'ils ont assez de capacités pour faire bien un petit boulot","D'autres jeunes donnent rendez-vous aux personnes qui les attirent","D'autres jeunes ne font pas, généralement, ce qui leur causerait des ennuis","D'autres jeunes n'ont pas vraiment d'ami intime avec lequel partager leurs secrets","D'autres jeunes aiment la façon dont ils mènent leur vie","D'autres jeunes ne réussissent pas très bien dans leur travail scolaire","D'autres jeunes sont vraiment faciles à aimer","D'autres jeunes ont l'impression qu'ils ne peuvent pas être aussi bons que les autres en sport","D'autres jeunes apprécient leur apparence physique telle qu'elle est","D'autres jeunes ne se sentent pas assez mûrs pour bien exercer un travail payé","D'autres jeunes s'inquiètent en se demandant si d'autres de leur âge tomberont amoureux d'eux","D'autres jeunes ne se sentent pas bien quant à la façon dont ils agissent souvent","D'autres jeunes ont un ami proche avec qui ils partagent des choses","D'autres jeunes ne sont pas souvent heureux de ce qu'ils sont","D'autres jeunes peuvent presque toujours trouver les réponses","D'autres jeunes ne sont pas très appréciés des autres de leur âge","D'autres jeunes sont bons tout de suite dans les jeux de plein air nouveaux","D'autres pensent qu'ils ne sont pas très beaux","D'autres pensent qu'ils travaillent vraiment bien dans les petits jobs qu'ils font","D'autres se demandent s'ils sont drôles et intéressants lorsqu'ils sortent avec quelqu'un","D'autres jeunes ne font presque jamais des choses qu'ils savent qu'ils ne devraient pas faire","D'autres jeunes sont capables de se faire des amis proches en qui ils peuvent avoir vraiment confiance","D'autres souhaiteraient être quelqu'un d'autre","D'autres jeunes se demandent s'ils sont intelligents","D'autres jeunes souhaiteraient que les autres de leur âge soient plus nombreux à les accepter","D'autres jeunes se trouvent très athlétiques","D'autres jeunes voudraient que leur apparence soit différente","D'autres jeunes se demandent s'ils feraient aussi bien qu'ils le devraient dans un travail payé","D'autres jeunes sortent avec les personnes à qui ils voulaient vraiment donner rendez-vous","D'autres jeunes souvent n'agissent pas comme ils sont supposés le faire","D'autres jeunes ont un ami proche et peuvent partager avec lui des idées et des sentiments personnels","D'autres jeunes voudraient être différents de ce qu'ils sont"];
+const EX=["Certains jeunes aiment aller au cinéma dans leur temps libre","D'autres jeunes préfèrent aller à des rencontres sportives"];
+
+// Sous-échelles : numéros d'items, négatif = item inversé (5 − x)
+const SC=[
+["Compétence scolaire","-1,10,-19,28,-37","Correspond à la perception que vous avez de votre capacité pour le domaine scolaire."],
+["Acceptation sociale","2,-11,20,-29,-38","Évalue dans quelle mesure vous vous sentez accepté-e par les autres, vous vous estimez populaire, avez beaucoup d’amis, sentez qu’il est facile pour vous d’être apprécié-e."],
+["Compétence athlétique","-3,-12,-21,30,39","Correspond à la perception que vous avez de vos capacités en sport."],
+["Apparence physique","4,13,22,-31,-40","Évalue dans quelle mesure vous êtes satisfait-e de votre apparence, appréciez votre corps, vous vous sentez beau/belle physiquement."],
+["Compétences dans le travail","-5,14,-23,32,-41","Rend compte de la manière dont vous estimez vos capacités pour les petits boulots, vous vous sentez prêt-e à réussir dans ce type d’activités ou vous estimez réussir dans ceux que vous effectuez."],
+["Attrait dans les relations amoureuses","-6,15,-24,-33,42","Correspond à la perception d’être attirant-e sentimentalement pour ceux/celles qui vous intéressent, de sortir avec ceux/celles avec qui vous voulez sortir, d’être amusant-e et intéressant-e dans une relation amoureuse."],
+["Conduite","-7,16,-25,34,-43","Évalue dans quelle mesure vous aimez la façon dont vous vous comportez, pensez faire ce qu’il est bien de faire, agir comme vous êtes censé-e le faire et éviter de vous mettre en difficulté."],
+["Amitié intime","-8,-17,26,35,44","Correspond à la perception que vous avez de votre capacité à vous faire des amis intimes avec lesquels partager des pensées personnelles et des secrets."],
+["Valeur globale de soi","9,18,-27,-36,-45","Évalue la manière dont vous vous appréciez en tant que personne, vous êtes heureux-se de la façon dont vous menez votre vie."]
+].map(([n,i,d])=>({n,d,it:i.split(",").map(Number)}));
+
+// Étalonnage Inetop/CNAM 2015 (repris du fichier Excel) : seuils des étalons 2,3,4,5 ; score > seuil
+const T={
+LPro_M:"8/9/6/5/9/7/7/8/8;11/14/11/9/13/10/12/12/12;15/17/15/15/17/14/15/17/16;17/19/19/18/19/17/17/19/19",
+LGT_M:"8/9/9/6/10/7/9/7/7;11/13/12/10/13/10/12/12/11;15/16/16/14/16/14/16/16/15;19/19/19/18/19/17/18/19/18",
+Col_M:"7/9/8/8/10/8/9/10/9;11/14/12/12/13/10/11/13/13;14/17/16/16/17/14/15/17/17;18/19/19/19/19/17/18/19/19",
+LPro_F:"8/9/6/5/9/6/9/9/7;10/13/9/9/14/9/12/13/12;14/16/14/14/17/14/15/17/16;17/18/17/17/19/16/18/19/19",
+LGT_F:"8/9/6/5/10/6/9/9/7;10/13/9/8/12/8/12/13/12;14/15/13/12/16/12/15/17/15;17/18/16/17/19/15/18/19/19",
+Col_F:"7/8/6/5/10/6/9/8/7;11/13/9/9/13/9/12/13/12;15/16/14/14/16/13/15/17/15;18/19/17/18/18/15/18/19/18"};
+const NIV={Col:"Collège",LGT:"Lycée général ou technologique",LPro:"Lycée professionnel"};
+
+function score(ans){ // ans[0..44] = Q1..Q45, valeurs 1..4
+  return SC.map(s=>s.it.reduce((t,k)=>t+(k<0?5-ans[-k-1]:ans[k-1]),0));
+}
+function etalon(raw,niv,sexe){
+  const th=T[niv+"_"+sexe].split(";").map(r=>r.split("/").map(Number));
+  return raw.map((s,i)=>1+th.filter(t=>s>t[i]).length);
+}
+
+// Code de résultat : sexe(1) niveau(1) naissance(8) passation(8) 45 réponses, importance(9), compétence(9), somme de contrôle(2), identifiant
+const NIVC=["Col","LGT","LPro"];
+function checksum(s){let t=0;for(let i=0;i<s.length;i++)t=(t+s.charCodeAt(i)*(i+1))%97;return String(t).padStart(2,"0")}
+function makeCode(){
+  const id=info.code.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^A-Za-z0-9_-]/g,"-").slice(0,30);
+  const body=info.sexe+NIVC.indexOf(info.niv)+info.naiss.replace(/-/g,"")+info.fin.slice(0,10).replace(/-/g,"")+ans.join("")+pI.join("")+pC.join("");
+  return body+checksum(body)+id;
+}
+function decodeCode(c){
+  const m=/^([MF])([0-2])(\d{8})(\d{8})([1-4]{45})([1-5]{9})([1-5]{9})(\d{2})([A-Za-z0-9_-]*)$/.exec(c);
+  if(!m||checksum(c.slice(0,81))!==m[8])return null;
+  const f=m[4],a=x=>x.split("").map(Number);
+  return{sexe:m[1],niv:NIVC[+m[2]],fin:`${f.slice(0,4)}-${f.slice(4,6)}-${f.slice(6,8)}`,ans:a(m[5]),pI:a(m[6]),pC:a(m[7]),id:m[9]};
+}
+
+const app=document.getElementById("app");
+let info={},ans=[],idx=-1,pI=[],pC=[];
+
+const $=s=>app.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function home(){
+  app.innerHTML=`<h1>À qui je ressemble</h1>
+  <p>Ce questionnaire cherche à savoir quel type de personne tu es. C'est une enquête, pas un test : il n'y a ni bonnes ni mauvaises réponses. Il y a 45 questions, environ 10 minutes.</p>
+  <label for="code">Prénom ou code</label><input id="code" autocomplete="off">
+  <label for="sexe">Sexe (pour l'étalonnage)</label><select id="sexe"><option value="">Choisir…</option><option value="F">Fille</option><option value="M">Garçon</option></select>
+  <label for="naiss">Date de naissance</label><input id="naiss" type="date">
+  <label for="niv">Niveau</label><select id="niv"><option value="">Choisir…</option><option value="Col">Collège</option><option value="LGT">Lycée général ou technologique</option><option value="LPro">Lycée professionnel</option></select>
+  <div class="err" id="err" role="alert"></div>
+  <button class="btn" id="go">Commencer</button>`;
+  $("#go").onclick=()=>{
+    const v=id=>$("#"+id).value.trim();
+    if(!v("code")||!v("sexe")||!v("naiss")||!v("niv")){$("#err").textContent="Complète les quatre champs pour continuer.";return}
+    info={code:v("code"),sexe:v("sexe"),naiss:v("naiss"),niv:v("niv"),debut:new Date().toISOString()};
+    ans=[];pI=[];pC=[];idx=-1;consigne();
+  };
+}
+function consigne(){
+  app.innerHTML=`<h1>Comment répondre</h1>
+  <p>Chaque question présente deux types de jeunes, séparés par « mais ». Choisis d'abord celui qui te ressemble le plus.</p>
+  <p>Ensuite, indique si c'est <b>tout à fait vrai</b> ou <b>plutôt vrai</b> pour toi. Une seule case par question.</p>
+  <p>On commence par un exemple pour s'entraîner.</p>
+  <button class="btn" id="go">Faire l'exemple</button>`;
+  $("#go").onclick=()=>question();
+}
+function question(){
+  const ex=idx<0,a=ex?EX[0]:L[idx],b=ex?EX[1]:R[idx];
+  const pct=ex?0:Math.round(idx/45*100);
+  app.innerHTML=`<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="45" aria-valuenow="${idx+1}"><i style="width:${pct}%"></i></div>
+  <p class="mute">${ex?"Exemple pour s'entraîner":"Question "+(idx+1)+" sur 45"}</p>
+  <div class="pair">
+   <div class="side"><p>${esc(a)}</p><div class="opts"><button class="opt" data-v="1">Tout à fait vrai pour moi</button><button class="opt" data-v="2">Plutôt vrai pour moi</button></div></div>
+   <div class="mais">MAIS</div>
+   <div class="side"><p>${esc(b)}</p><div class="opts"><button class="opt" data-v="3">Plutôt vrai pour moi</button><button class="opt" data-v="4">Tout à fait vrai pour moi</button></div></div>
+  </div>
+  ${idx>=0?'<button class="back" id="back">Question précédente</button>':""}`;
+  const cur=ans[idx];
+  app.querySelectorAll(".opt").forEach(o=>{
+    if(+o.dataset.v===cur)o.classList.add("on");
+    o.onclick=()=>{
+      o.classList.add("on");
+      if(ex){idx=0;setTimeout(question,180);return}
+      ans[idx]=+o.dataset.v;
+      setTimeout(()=>{if(idx===44)position("imp");else{idx++;question()}},180);
+    };
+  });
+  const bk=$("#back");if(bk)bk.onclick=()=>{idx--;question()};
+}
+function position(kind){
+  const imp=kind==="imp",arr=imp?pI:pC;
+  app.innerHTML=`<h1>${imp?"L'importance de chaque domaine":"Ta compétence dans chaque domaine"}</h1>
+  <p>${imp?"Le questionnaire évalue 9 dimensions. Pour chacune, indique l'importance que tu lui accordes dans ta vie, de <b>1</b> (pas du tout important pour moi) à <b>5</b> (très important pour moi).":"Pour chacune des mêmes dimensions, indique dans quelle mesure tu te sens compétent·e, de <b>1</b> (pas du tout compétent·e) à <b>5</b> (tout à fait compétent·e)."}</p>
+  ${SC.map((s,i)=>`<div class="side dom"><p>${i+1}. ${s.n}</p><p class="d">${s.d}</p><div class="five" data-i="${i}">${[1,2,3,4,5].map(v=>`<button class="opt${arr[i]===v?" on":""}" data-v="${v}" aria-label="${s.n} : ${v} sur 5">${v}</button>`).join("")}</div></div>`).join("")}
+  <div class="err" id="err" role="alert"></div><button class="btn" id="go">Continuer</button>`;
+  app.querySelectorAll(".five").forEach(f=>f.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{
+    arr[+f.dataset.i]=+o.dataset.v;f.querySelectorAll(".opt").forEach(x=>x.classList.toggle("on",x===o));
+  }));
+  $("#go").onclick=()=>{
+    if(SC.some((_,i)=>!arr[i])){$("#err").textContent="Réponds pour les 9 domaines pour continuer.";return}
+    scrollTo(0,0);if(imp)position("comp");else finish();
+  };
+}
+function finish(){
+  info.fin=new Date().toISOString();
+  const raw=score(ans);
+  report(raw,etalon(raw,info.niv,info.sexe),makeCode());
+}
+const SH=["Scolaire","Social","Athlétique","Physique","Travail","Amoureux","Conduite","Amitié","Valeur globale"];
+const SER=[["Résultats étalonnés","var(--c1)",""],["Importance","var(--c2)","8 4"],["Compétence","var(--c3)","2 4"]];
+function radar(data){
+  const cx=200,cy=175,R=105,n=9,ang=i=>-Math.PI/2+i*2*Math.PI/n,
+    P=(i,v)=>[(cx+Math.cos(ang(i))*R*v/5).toFixed(1),(cy+Math.sin(ang(i))*R*v/5).toFixed(1)],
+    poly=v=>SH.map((_,i)=>P(i,v).join(",")).join(" ");
+  const rings=[1,2,3,4,5].map(v=>`<polygon points="${poly(v)}" fill="none" stroke="var(--line)"/><text class="t" x="${cx+4}" y="${(cy-R*v/5+10).toFixed(1)}">${v}</text>`).join("");
+  const axes=SH.map((_,i)=>`<line x1="${cx}" y1="${cy}" x2="${P(i,5)[0]}" y2="${P(i,5)[1]}" stroke="var(--line)"/>`).join("");
+  const labs=SH.map((t,i)=>{const c=Math.cos(ang(i)),s=Math.sin(ang(i));
+    return `<text x="${(cx+c*(R+12)).toFixed(1)}" y="${(cy+s*(R+12)+4).toFixed(1)}" text-anchor="${c>0.3?"start":c<-0.3?"end":"middle"}">${t}</text>`}).join("");
+  const lines=data.map((d,k)=>`<polygon points="${d.map((v,i)=>P(i,v).join(",")).join(" ")}" fill="${k===0?SER[0][1]:"none"}" fill-opacity=".13" stroke="${SER[k][1]}" stroke-width="2.5" stroke-linejoin="round"${SER[k][2]?` stroke-dasharray="${SER[k][2]}"`:""}/>`).join("");
+  const leg=SER.map(([t,c,d])=>`<span><svg width="30" height="8" aria-hidden="true"><line x1="0" y1="4" x2="30" y2="4" stroke="${c}" stroke-width="3"${d?` stroke-dasharray="${d}"`:""}/></svg>${t}</span>`).join("");
+  return `<svg class="rad" viewBox="0 0 400 350" role="img" aria-label="Graphique en étoile : résultats étalonnés, importance et compétence pour les 9 dimensions">${rings}${axes}${lines}${labs}</svg><div class="leg">${leg}</div>`;
+}
+function kendall(x,y){ // tau-b de Kendall (gère les ex æquo)
+  let c=0,d=0,tx=0,ty=0;
+  for(let i=0;i<x.length;i++)for(let j=i+1;j<x.length;j++){
+    const a=Math.sign(x[i]-x[j]),b=Math.sign(y[i]-y[j]);
+    if(a===0)tx++;if(b===0)ty++;if(a*b>0)c++;else if(a*b<0)d++;
+  }
+  const n0=x.length*(x.length-1)/2,den=Math.sqrt((n0-tx)*(n0-ty));
+  return den?(c-d)/den:null;
+}
+function lecture(t){return t===null?"non calculable (une série ne varie pas)":t>=.5?"profils proches":t>=.2?"lien modéré":t>-.2?"peu de lien":t>-.5?"lien inverse modéré":"profils opposés"}
+function tauBlock(et){
+  const rows=[["Étalon et importance",et,pI],["Étalon et compétence",et,pC],["Importance et compétence",pI,pC]].map(([n,x,y])=>{const t=kendall(x,y);
+    return `<tr><td>${n}</td><td class="n">${t===null?"–":t.toFixed(2).replace(".",",").replace("-","−")}</td><td>${lecture(t)}</td></tr>`}).join("");
+  return `<h2>Cohérence entre les trois mesures</h2><div class="tw"><table><thead><tr><th>Comparaison</th><th class="n">τ</th><th>Lecture</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <p class="mute">Le τ de Kendall (version τb) compare deux classements des 9 dimensions : +1 s'ils sont identiques, 0 s'ils n'ont aucun lien, −1 s'ils sont opposés. Avec seulement 9 dimensions et beaucoup d'ex æquo, c'est une indication, pas un test statistique.</p>`;
+}
+function report(raw,et,code){
+  const d=new Date(info.fin).toLocaleDateString("fr-FR"),
+        mm=info.debut?Math.round((new Date(info.fin)-new Date(info.debut))/60000):null;
+  const rows=SC.map((s,i)=>`<tr><td>${s.n}</td><td class="n">${raw[i]}</td><td><div class="seg" aria-label="Étalon ${et[i]} sur 5">${[1,2,3,4,5].map(k=>`<b class="${k<=et[i]?"f":""}"></b>`).join("")}</div></td><td class="n">${et[i]}</td><td class="n">${pI[i]}</td><td class="n">${pC[i]}</td></tr>`).join("");
+  const mx=Math.max(...pI),top=SC.filter((_,i)=>pI[i]===mx).map(s=>s.n).join(", ");
+  app.innerHTML=`<h1>Mes résultats : « À qui je ressemble »</h1>
+  <div class="card"><dl class="meta"><dt>Nom ou code</dt><dd>${esc(info.code)}</dd><dt>Date de passation</dt><dd>${d}</dd>${mm!==null?`<dt>Durée</dt><dd>${mm} min</dd>`:""}<dt>Niveau</dt><dd>${NIV[info.niv]}</dd></dl>
+  <div class="tw"><table><thead><tr><th>Dimension</th><th class="n">Brut</th><th>Étalon</th><th class="n"></th><th class="n">Imp.</th><th class="n">Comp.</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <p class="mute">Score brut : de 5 à 20. Étalon : position par rapport à un groupe de référence de même sexe et de même niveau (${NIV[info.niv]}, ${info.sexe==="F"?"filles":"garçons"}) ; 1 = bas, 5 = haut.</p>
+  <p class="mute">Imp. = importance que j'accorde au domaine, Comp. = ma compétence ressentie (de 1 à 5). Domaine(s) le plus important pour moi : <b>${top}</b>.</p>
+  ${radar([et,pI,pC])}
+  ${tauBlock(et)}
+  <h2>Les 9 dimensions</h2><ul class="def">${SC.map(s=>`<li><b>${s.n}</b> : ${s.d}</li>`).join("")}</ul></div>
+  <div class="noprint">
+  ${GRIST_FORM_URL?'<button class="btn" id="env">Envoyer mes résultats</button>':""}
+  <button class="btn sec" onclick="print()">Imprimer ou enregistrer en PDF</button>
+  <button class="btn sec" id="cp">Copier mon code de résultat</button>
+  <p class="mute">Mon code de résultat : <code style="word-break:break-all">${code}</code></p></div>`;
+  const env=$("#env");
+  if(env)env.onclick=()=>window.open(GRIST_FORM_URL+"?Code="+encodeURIComponent(code),"_blank");
+  $("#cp").onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(code):Promise.reject()).then(()=>$("#cp").textContent="Copié").catch(()=>prompt("Copie ce code :",code))};
+}
+const hm=location.hash.match(/^#r=(.+)$/),dec=hm&&decodeCode(hm[1]);
+if(dec){info={code:dec.id,sexe:dec.sexe,niv:dec.niv,fin:dec.fin};ans=dec.ans;pI=dec.pI;pC=dec.pC;const raw=score(ans);report(raw,etalon(raw,dec.niv,dec.sexe),hm[1])}
+else{home();if(hm)$("#err").textContent="Code de résultat invalide : vérifie le lien."}
+</script>
+</body>
+</html>
